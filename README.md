@@ -27,7 +27,7 @@ This repository complies with the following artifact evaluation badges:
 
 ## Overview
 
-This repository accompanies the proof-of-concept notebook submitted to **SBRC 2026**. The work presents an **LLM-driven pipeline** that automates the generation of intrusion detection rules for IEC 61850 digital substations using the **GOOSE** protocol.
+This repository accompanies the proof-of-concept notebook submitted to **SBSEC 2026**. The work presents an **LLM-driven pipeline** that automates the generation of intrusion detection rules for IEC 61850 digital substations using the **GOOSE** protocol.
 
 The approach removes the need for domain experts to write rules by hand: given labeled samples from the ERENO dataset, an LLM identifies behavioral *red flags* and translates them into executable Python rules. Those rules are then evaluated inside a programmable switch simulator for real-time detection.
 
@@ -117,7 +117,7 @@ The LLM generates rules based on the following 15 features (derived from the ori
 
 ```
 .
-├── SBRC_2026_LLM_IDS_GOOSE_v1.ipynb # Main notebook (proof of concept)
+├── SBSEC_2026_LLM_IDS_GOOSE_v1.ipynb # Main notebook (proof of concept)
 ├── rules.py # Clean & refined detection rules (latest version)
 ├── rules_raw.py # Raw LLM-generated rules (before refinement)
 ├── requirements.txt # Python dependencies (pinned versions)
@@ -265,8 +265,8 @@ Follow these commands in order to reproduce the full experiment:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/lucastuxnet/SBRC_2026.git
-cd SBRC_2026
+git clone https://github.com/lucastuxnet/SBSEC_2026.git
+cd SBSEC_2026
 
 # 2. Create and activate a virtual environment
 python -m venv .venv
@@ -281,7 +281,7 @@ cp .env.example .env
 # Edit .env and add your Groq API key: GROQ_API_KEY=gsk_...
 
 # 5. Launch the notebook
-jupyter notebook SBRC_2026_LLM_IDS_GOOSE_v1.ipynb
+jupyter notebook SBSEC_2026_LLM_IDS_GOOSE_v1.ipynb
 ```
 
 ---
@@ -310,10 +310,10 @@ python -c "import pandas, groq; print('Dependencies OK')"
 #### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/lucastuxnet/SBRC_2026.git
+git clone https://github.com/lucastuxnet/SBSEC_2026.git
 ```
 ```bash
-cd SBRC_2026
+cd SBSEC_2026
 ```
 
 #### 2. Create the Dockerfile
@@ -353,13 +353,13 @@ GROQ_API_KEY=gsk_your_api_key_here
 #### 4. Build the Docker Image
 
 ```bash
-docker build -t sbrc2026 .
+docker build -t sbsec2026 .
 ```
 
 #### 5. Run the Container (without persistence)
 
 ```bash
-docker run -p 8888:8888 --env-file .env sbrc2026
+docker run -p 8888:8888 --env-file .env sbsec2026
 ```
 
 #### 6. Run the Container (with persistent output folder)
@@ -368,7 +368,7 @@ docker run -p 8888:8888 --env-file .env sbrc2026
 mkdir -p ./output_do_projeto
 ```
 ```bash
-docker run -p 8888:8888 --env-file .env -v $(pwd)/output_do_projeto:/app sbrc2026
+docker run -p 8888:8888 --env-file .env -v $(pwd)/output_do_projeto:/app sbsec2026
 ```
 
 #### 7. Access the Notebook
@@ -379,7 +379,7 @@ After running the container, the terminal will display a URL similar to:
 http://127.0.0.1:8888/tree?token=ed2cad5686f5d722ba7cb341fbbc2d65ca124f66a54ff1db
 ```
 
-Open this URL in your browser and click on `SBRC_2026_LLM_IDS_GOOSE_v1.ipynb`.
+Open this URL in your browser and click on `SBSEC_2026_LLM_IDS_GOOSE_v1.ipynb`.
 
 #### 8. Execute the Pipeline
 
@@ -429,7 +429,7 @@ Run the notebook cells in order:
 | Authentication error in §6 | Verify `.env` contains `GROQ_API_KEY=gsk_...` with no quotes or extra spaces |
 | API rate limit reached | Wait a few minutes and re-run the cell; notebook retries automatically |
 | Connection refused on port 8888 | Ensure container is running and port not blocked by firewall |
-| Module not found errors | Rebuild image with `docker build --no-cache -t sbrc2026 .` |
+| Module not found errors | Rebuild image with `docker build --no-cache -t sbsec2026 .` |
 | Permission denied on volume mount | Use absolute paths or check folder permissions |
 
 
@@ -440,7 +440,7 @@ Run the notebook cells in order:
 Open the notebook in Jupyter or VSCode and run the cells in order:
 
 ```bash
-jupyter notebook SBRC_2026_LLM_IDS_GOOSE_v1.ipynb
+jupyter notebook SBSEC_2026_LLM_IDS_GOOSE_v1.ipynb
 ```
 
 | Section | What it does |
@@ -515,9 +515,7 @@ After running the complete notebook, the following files will be created in the 
 
 | Version | Tag | Description | Date |
 |---------|-----|-------------|------|
-| v1.2 | `sbrc2026-camera-ready` | Final camera-ready version | May 2026 |
-| v1.1 | `sbrc2026-revised` | Post-review revisions | Apr 2026 |
-| v1.0 | `sbrc2026-submission` | Initial submission version | Mar 2026 |
+| v1.2 | `sbsec2026-submission` | Initial submission version | May 2026 |
 
 ---
 
@@ -550,4 +548,4 @@ This work demonstrates that LLMs can replace the manual rule-writing step in spe
 
 ## Citation
 
-If you use this work, please cite the corresponding paper published at **SBRC 2026**.
+If you use this work, please cite the corresponding paper published at **SBSEC 2026**.
